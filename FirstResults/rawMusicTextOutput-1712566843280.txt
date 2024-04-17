@@ -1,0 +1,5 @@
+\version "2.24.3"
+
+\relative {
+	gis'' b'' e'' d'' gis'' d'' gis'' ais'' gis'' fis'' 
+}

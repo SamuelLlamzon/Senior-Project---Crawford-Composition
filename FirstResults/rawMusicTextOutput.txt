@@ -1,0 +1,5 @@
+\version "2.24.3"
+
+{
+	d c b d b fis gis cis a a 
+}
