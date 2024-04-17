@@ -1,0 +1,5 @@
+\version "2.24.3"
+
+{
+	e' a' gis' f' gis' f' dis' e' cis' gis' d' c' ais' gis' f' fis' a' fis' gis' e' ais' f' a' fis' gis' d' fis' f' d' b' a' fis' d' a' gis' b' c' ais' ais' gis' b' a' cis' dis' e' a' gis' f' gis' dis' d' dis' e' d' cis' a' ais' c' a' b' d' c' cis' c' gis' gis' f' gis' e' b' cis' e' cis' dis' ais' gis' cis' ais' f' a' gis' gis' f' e' fis' e' c' e' d' gis' b' fis' cis' ais' gis' gis' dis' dis' b' f' c' e' cis' d' f' gis' b' e' d' cis' a' c' a' e' e' fis' b' fis' dis' gis' dis' f' dis' dis' f' ais' ais' gis' c' f' f' f' e' ais' c' gis' a' dis' d' c' gis' d' c' gis' e' e' cis' gis' ais' e' b' ais' a' c' c' gis' ais' a' b' f' dis' cis' ais' fis' ais' e' fis' b' d' c' cis' dis' d' fis' dis' cis' a' gis' gis' cis' c' a' d' d' gis' fis' cis' ais' cis' e' gis' gis' gis' d' gis' b' gis' ais' a' d' 
+}

@@ -7,9 +7,21 @@ public class Composer {
     //Experiments in Computer Composition
     public static void main(String [] args){
         Neume basicPhrase = new Neume();
-        for(int i=0; i<100; i++){
+        for(int i=0; i<20; i++){
+            boolean candidateSelected = false;
+            //blank note so that the variable gets instantiated before the loop.
+            Note candidate = new Note();
             //candidate
-            basicPhrase.addNote(randomNewNote());
+            while(!candidateSelected){
+                candidate = randomNewNote();
+                boolean validCandidate = true;
+                if(validCandidate && !notForbiddenRepetition(basicPhrase, candidate)){
+                    validCandidate = false;
+                }
+                candidateSelected = validCandidate;
+            }
+            basicPhrase.addNote(candidate);
+
         }
         System.out.println(basicPhrase.getTranslatedNoteSequence());
         try{
@@ -34,7 +46,9 @@ public class Composer {
             
         }
     }
+
     //Methods
+
     public static String toNotes(List<Note> rawSequence){
         String translatedSequence = "";
         for(int i = 0; i < rawSequence.size(); i++){
@@ -59,4 +73,17 @@ public class Composer {
     public static Note randomNewNote(){
         return new Note(Integer.toString((int)(12*Math.random()), 12).charAt(0)); // 0<= x < 12
     }
+
+    //Testing methods
+
+    public static boolean notForbiddenRepetition(Neume existingNoteSequence, Note candidate){
+        boolean isValid = true;
+        List<Note> noteSequence = existingNoteSequence.getNoteSequence();
+        for(int i=0; isValid && i<6 && i<noteSequence.size(); i++){
+            //Note note1 = noteSequence.get(noteSequence.size()-1-i);
+            isValid =  !noteSequence.get(noteSequence.size()-1-i).isEqual(candidate);
+        }
+        return isValid;
+    }
+
 }

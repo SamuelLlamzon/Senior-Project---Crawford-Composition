@@ -58,4 +58,8 @@ public class Note{
     public String toString(){
         return "(" + rawNote + octave + ")";
     }
+
+    public boolean isEqual(Note otherNote){
+        return rawNote == otherNote.getRawNote() && octave == otherNote.getNoteOctave();
+    }
 }
