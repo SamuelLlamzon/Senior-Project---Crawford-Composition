@@ -1,0 +1,5 @@
+\version "2.24.3"
+
+{
+	fis' e' dis' f' c' gis' d' ais' gis' dis' fis' e' a' c' f' gis' d' dis' cis' b' 
+}

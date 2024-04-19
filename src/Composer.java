@@ -6,18 +6,24 @@ public class Composer {
     //Senior Project: MUS-490
     //Experiments in Computer Composition
     public static void main(String [] args){
+
+        //instantiates the first Neume object.
         Neume basicPhrase = new Neume();
         for(int i=0; i<20; i++){
             boolean candidateSelected = false;
+
             //blank note so that the variable gets instantiated before the loop.
             Note candidate = new Note();
-            //candidate
+
+            //candidate verification and selection.
             while(!candidateSelected){
-                candidate = randomNewNote();
+                //If there are nocandidate = randomNewNote();
                 boolean validCandidate = true;
+                //Check for forbidden repetitions
                 if(validCandidate && !notForbiddenRepetition(basicPhrase, candidate)){
                     validCandidate = false;
                 }
+                //if(validCandidate && )
                 candidateSelected = validCandidate;
             }
             basicPhrase.addNote(candidate);
@@ -32,6 +38,7 @@ public class Composer {
             FileWriter composerScribe = new FileWriter(filename);
             composerScribe.write("\\version \"2.24.3\"\r\n\r\n{\r\n\t");
             composerScribe.write(basicPhrase.getTranslatedNoteSequence());
+            composerScribe.write(basicPhrase.getTransposedNeume(5).getTranslatedNoteSequence());
             composerScribe.write("\r\n}");
             /*composerScribe.write("\\version \"2.24.3\"\r\n\r\n{\r\n\t");
             composerScribe.write(basicPhrase.getTranslatedNoteSequence());
@@ -85,5 +92,14 @@ public class Composer {
         }
         return isValid;
     }
+    /*public static boolean notForbiddenIntervalRepetition(Neume existingNoteSequence, Note candidate){
+        boolean isValid = true;
+        List<Note> noteSequence = existingNoteSequence.getNoteSequence();
+        for(int i=0; isValid && i<6 && i<noteSequence.size(); i++){
+            //Note note1 = noteSequence.get(noteSequence.size()-1-i);
+            isValid =  !noteSequence.get(noteSequence.size()-1-i).isEqual(candidate);
+        }
+        return isValid;
+    }*/
 
 }

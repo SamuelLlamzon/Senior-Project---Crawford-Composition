@@ -55,11 +55,24 @@ public class Note{
         return octave;
     }
 
+    public Note getTransposedNote(int intervalOfTransposition){
+        return new Note(Integer.toString((Integer.parseInt(rawNote + "", 12)+intervalOfTransposition)/12).charAt(0), octave + intervalOfTransposition % 12);
+    }
+
     public String toString(){
         return "(" + rawNote + octave + ")";
     }
 
     public boolean isEqual(Note otherNote){
         return rawNote == otherNote.getRawNote() && octave == otherNote.getNoteOctave();
+    }
+
+    //This is almost a compareTo method...
+    public int getInterval(Note otherNote){
+        return otherNote.getRawNote() - rawNote;
+    }
+
+    public int getAbsoluteInterval(Note otherNote){
+        return Math.abs(getInterval(otherNote));
     }
 }

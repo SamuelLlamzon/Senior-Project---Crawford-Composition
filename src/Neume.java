@@ -57,4 +57,12 @@ public class Neume{
     public String toString(){
         return rawNoteSequence.toString();
     }
+
+    public Neume getTransposedNeume(int intervalOfTransposition){
+        Neume transposedNeume = new Neume();
+        for(Note rawNote : rawNoteSequence){
+            transposedNeume.addNote(rawNote.getTransposedNote(intervalOfTransposition));
+        }
+        return new Neume(transposedNeume);
+    }
 }
