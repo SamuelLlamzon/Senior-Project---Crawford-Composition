@@ -48,9 +48,14 @@ public class Composer {
             composerScribe.write("\r\n}");*/
             composerScribe.close();
 
-            Runtime activeRuntime = Runtime.getRuntime();
-            Process generateLilypondPDF = activeRuntime.exec("lilypond " + filename);
-            generateLilypondPDF.destroy();
+            try{
+                Runtime activeRuntime = Runtime.getRuntime();
+                Process generateLilypondPDF = activeRuntime.exec("lilypond " + filename);
+                generateLilypondPDF.waitFor();
+                generateLilypondPDF.destroy();
+            } catch(InterruptedException calledException){
+                System.out.println("File generation process interrupted");
+            }
         }
         catch (IOException exception){
             
