@@ -1,3 +1,6 @@
+import java.util.*;
+import java.lang.Math;
+
 public class BoundedNeume extends Neume{
     private int lowerBound, higherBound;
     private int[] frequencyArray;
@@ -46,7 +49,7 @@ public class BoundedNeume extends Neume{
         return frequencyArray;
     }
 
-    public int mostFrequentOccurrences(){
+    public int getHighestFrequency(){
         int highestFrequency = 0;
         for(int occurrences : frequencyArray){
             highestFrequency = Math.max(highestFrequency, occurrences);
@@ -54,7 +57,7 @@ public class BoundedNeume extends Neume{
         return highestFrequency;
     }
 
-    public int leastFrequentOccurrences(){
+    public int getLowestFrequency(){
         if(super.getSequenceLength() == 0)
             return 0;
         int lowestFrequency = frequencyArray[0];
@@ -62,5 +65,48 @@ public class BoundedNeume extends Neume{
             lowestFrequency = Math.min(lowestFrequency, occurrences);
         }
         return lowestFrequency;
+    }
+
+    public int getFrequencyRange(){
+        return getHighestFrequency() - getLowestFrequency();
+    }
+
+    public List<Integer> mostFrequentNotes(){
+        int highestFrequency = getHighestFrequency();
+        List<Integer> frequentNotes = new ArrayList<Integer>();
+        for(int i=0; i<frequencyArray.length; i++){
+            if(frequencyArray[i]==highestFrequency){
+                frequentNotes.add(lowerBound+i);
+            }
+        }
+        return frequentNotes;
+    }
+
+    public List<Integer> leastFrequentNotes(){
+        int lowestFrequency = getLowestFrequency();
+        List<Integer> infrequentNotes = new ArrayList<Integer>();
+        for(int i=0; i<frequencyArray.length; i++){
+            if(frequencyArray[i]==lowestFrequency){
+                infrequentNotes.add(lowerBound+i);
+            }
+        }
+        return infrequentNotes;
+    }
+
+    //
+    // Mutators
+    //
+
+    @Override
+    public void addNote(Note newNote){
+        super.addNote(newNote);
+        frequencyArray[newNote.getPitchValue()-lowerBound]++;
+    }
+
+    @Override
+    public Note removeNote(){
+        Note removedNote = super.removeNote();
+        frequencyArray[removedNote.getPitchValue()-lowerBound]--;
+        return removedNote;
     }
 }

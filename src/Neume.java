@@ -40,9 +40,9 @@ public class Neume{
     }
     
     //Probably won't use this one, but...
-    public void removeNote(){
-        rawNoteSequence.remove(sequenceLength-1);
+    public Note removeNote(){
         sequenceLength -= 1;
+        return rawNoteSequence.remove(sequenceLength-1);
     }
 
     //No excerpt method will be created as one can simply toString(), do some String manipulation, and create a new Neume.

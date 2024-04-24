@@ -41,7 +41,7 @@ public class Composer {
             FileWriter composerScribe = new FileWriter(filename);
             composerScribe.write("\\version \"2.24.3\"\r\n\r\n{\r\n\t");
             composerScribe.write(basicPhrase.getTranslatedNoteSequence());
-            //composerScribe.write(basicPhrase.getTransposedNeume(5).getTranslatedNoteSequence());
+            composerScribe.write(basicPhrase.getTransposedNeume(5).getTranslatedNoteSequence());
             composerScribe.write("\r\n}");
             /*composerScribe.write("\\version \"2.24.3\"\r\n\r\n{\r\n\t");
             composerScribe.write(basicPhrase.getTranslatedNoteSequence());
