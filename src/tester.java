@@ -9,5 +9,11 @@ public class tester {
         Neumy.removeNote();
         System.out.println(Neumy);
         Neumy.removeNote();*/
+        Integer n = 5;
+        Integer m = 100;
+        System.out.println(m.compareTo(n));
+        String s = "a";
+        String t = "g";
+        System.out.println(s.compareTo(t));
     }
 }

@@ -3,6 +3,7 @@ import java.util.*;
 public class Neume{
     private List<Note> rawNoteSequence;
     private int sequenceLength;
+    //private int[] frequencyArray; 
 
     //Constructors
     
@@ -12,6 +13,7 @@ public class Neume{
         rawNoteSequence = new ArrayList<Note>();
         //Length of the rawNoteSequence.
         sequenceLength = 0;
+        //frequencyArray = new int [12];
     }
 
     //one note constructor
@@ -19,12 +21,15 @@ public class Neume{
         rawNoteSequence = new ArrayList<Note>();
         rawNoteSequence.add(firstNote);
         sequenceLength = 1;
+        //frequencyArray = new int [12];
+        //frequencyArray[firstNote.getRawNote()]++;
     }
 
     //existing Neume constructor
     public Neume(Neume oldNeume){
         rawNoteSequence = oldNeume.rawNoteSequence; //I know I should probably use an accessor method... bleh.
         sequenceLength = oldNeume.sequenceLength;
+        //frequencyArray = oldNeume.frequencyArray;
     }
 
     //Mutators

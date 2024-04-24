@@ -17,7 +17,10 @@ public class Composer {
 
             //candidate verification and selection.
             while(!candidateSelected){
+
                 //If there are nocandidate = randomNewNote();
+                candidate = randomNewNote();
+
                 boolean validCandidate = true;
                 //Check for forbidden repetitions
                 if(validCandidate && !notForbiddenRepetition(basicPhrase, candidate)){
@@ -38,7 +41,7 @@ public class Composer {
             FileWriter composerScribe = new FileWriter(filename);
             composerScribe.write("\\version \"2.24.3\"\r\n\r\n{\r\n\t");
             composerScribe.write(basicPhrase.getTranslatedNoteSequence());
-            composerScribe.write(basicPhrase.getTransposedNeume(5).getTranslatedNoteSequence());
+            //composerScribe.write(basicPhrase.getTransposedNeume(5).getTranslatedNoteSequence());
             composerScribe.write("\r\n}");
             /*composerScribe.write("\\version \"2.24.3\"\r\n\r\n{\r\n\t");
             composerScribe.write(basicPhrase.getTranslatedNoteSequence());
@@ -59,23 +62,33 @@ public class Composer {
     public static String toNotes(List<Note> rawSequence){
         String translatedSequence = "";
         for(int i = 0; i < rawSequence.size(); i++){
-            translatedSequence += toNote(rawSequence.get(i).getRawNote()) + "\' ";
+            translatedSequence += toNote(rawSequence.get(i)) + "\' ";
         }
         return translatedSequence;
     }
-    public static String toNote(char rawNote){
-        if(rawNote == '0') return "a";
-        if(rawNote == '1') return "ais";
-        if(rawNote == '2') return "b";
-        if(rawNote == '3') return "c";
-        if(rawNote == '4') return "cis";
-        if(rawNote == '5') return "d";
-        if(rawNote == '6') return "dis";
-        if(rawNote == '7') return "e";
-        if(rawNote == '8') return "f";
-        if(rawNote == '9') return "fis";
-        if(rawNote == 'A') return "g";
-        return "gis";
+    public static String toNote(Note rawNote){
+        char rawNoteValue = rawNote.getRawNote();
+        if(rawNote.getAccidentalSuffix().equals("es")){
+            if(rawNoteValue == '1') return "bes";
+            if(rawNoteValue == '4') return "des";
+            if(rawNoteValue == '6') return "ees";
+            if(rawNoteValue == '9') return "ges";
+            return "aes";
+        }
+        else{
+            if(rawNoteValue == '0') return "a";
+            if(rawNoteValue == '1') return "ais";
+            if(rawNoteValue == '2') return "b";
+            if(rawNoteValue == '3') return "c";
+            if(rawNoteValue == '4') return "cis";
+            if(rawNoteValue == '5') return "d";
+            if(rawNoteValue == '6') return "dis";
+            if(rawNoteValue == '7') return "e";
+            if(rawNoteValue == '8') return "f";
+            if(rawNoteValue == '9') return "fis";
+            if(rawNoteValue == 'A') return "g";
+            return "gis";
+        }
     }
     public static Note randomNewNote(){
         return new Note(Integer.toString((int)(12*Math.random()), 12).charAt(0)); // 0<= x < 12
@@ -88,9 +101,29 @@ public class Composer {
         List<Note> noteSequence = existingNoteSequence.getNoteSequence();
         for(int i=0; isValid && i<6 && i<noteSequence.size(); i++){
             //Note note1 = noteSequence.get(noteSequence.size()-1-i);
-            isValid =  !noteSequence.get(noteSequence.size()-1-i).isEqual(candidate);
+            isValid = !noteSequence.get(noteSequence.size()-1-i).isEqual(candidate);
         }
         return isValid;
+    }
+
+    // Resource method to determine whether a piece is sharp or flat. Utilized in the Note constructor.
+
+    public static String assignSuffix(char noteValue){
+        if(isBlackKey(noteValue)){
+            if((int)(Math.random()*2)==0){
+                return "is";
+            }
+            else{
+                return "es";
+            }
+        }
+        return "";
+    }
+
+    public static boolean isBlackKey(char noteValue){
+        System.out.println(noteValue);
+        int pitchClass = Integer.parseInt(noteValue + "", 12);
+        return pitchClass == 1 || pitchClass == 4 || pitchClass == 6 || pitchClass == 9 || pitchClass == 11;
     }
     /*public static boolean notForbiddenIntervalRepetition(Neume existingNoteSequence, Note candidate){
         boolean isValid = true;
