@@ -35,6 +35,14 @@ public class Note implements Comparable<Note>{
         accidentalSuffix = Composer.assignSuffix(noteValue);
     }
 
+    //one note constructor, specified ocatve, specified accidental;
+    public Note(char noteValue, int specifiedOctave, String presetAccidentalSuffix){
+        rawNote = noteValue;
+        octave = specifiedOctave;
+        accidentalSuffix = presetAccidentalSuffix;
+    }
+
+
     //
     //Mutators
     //
@@ -50,6 +58,14 @@ public class Note implements Comparable<Note>{
         rawNote = newNote;
         octave = newOctave;
         accidentalSuffix = Composer.assignSuffix(newNote);
+    }
+
+    public void changeOctave(int newOctave){
+        octave=newOctave;
+    }
+
+    public void setAccidentalSuffix(String newSuffix){
+        accidentalSuffix = newSuffix;
     }
 
     //
@@ -77,7 +93,7 @@ public class Note implements Comparable<Note>{
     }
 
     public Note getTransposedNote(int intervalOfTransposition){
-        return new Note(Integer.toString((getPitchValue()+intervalOfTransposition)%12).charAt(0), (getPitchValue()+intervalOfTransposition)/12 + 1);//Integer.toString((Integer.parseInt(rawNote + "", 12)+intervalOfTransposition)/12).charAt(0), octave + intervalOfTransposition % 12);
+        return new Note(Integer.toString((getPitchValue()+intervalOfTransposition)%12).charAt(0), (getPitchValue()+intervalOfTransposition)/12 + 1, accidentalSuffix);//Integer.toString((Integer.parseInt(rawNote + "", 12)+intervalOfTransposition)/12).charAt(0), octave + intervalOfTransposition % 12);
     }
 
     public String toString(){

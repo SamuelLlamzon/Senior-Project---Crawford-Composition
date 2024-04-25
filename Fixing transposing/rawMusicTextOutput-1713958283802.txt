@@ -1,0 +1,5 @@
+\version "2.24.3"
+
+\fixed a,, {
+	a''' gis''' gis''' fis''' dis''' des''' e''' d''' aes''' bes''' f''' ges''' dis''' c''' d''' b''' aes''' e''' a''' bes''' d''' des'''' c'''' b'''' ais''' fis''' a'''' ais''' cis'''' dis''' ais'''' b'''' bes''' f''' ais''' e''' cis'''' a'''' d''' ees''' 
+}
