@@ -104,6 +104,16 @@ public class BoundedNeume extends Neume{
         return infrequentNotes;
     }
 
+    public List<Integer> unusedNotes(){
+        List<Integer> infrequentNotes = new ArrayList<Integer>();
+        for(int i=0; i<frequencyArray.length; i++){
+            if(frequencyArray[i]==0){
+                infrequentNotes.add(lowerBound+i);
+            }
+        }
+        return infrequentNotes;
+    }
+
     public int generateCompatiblePitchClass(){
         int generatedInt = (int)((higherBound-lowerBound+1)*(Math.random())) + lowerBound; // 24<=x<=51, lb=24, hb=51
         System.out.print(generatedInt + ", ");
