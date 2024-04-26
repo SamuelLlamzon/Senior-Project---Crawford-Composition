@@ -1,0 +1,19 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Samuel Llamzon Senior Project – Crawposer
+message: >-
+  A compositional algorithm informed by the works of Ruth
+  Crawford Seeger
+type: software
+authors:
+  - given-names: Samuel
+    email: SamuelLlamzon@gmail.com
+    family-names: Llamzon
+repository-code: >-
+  https://github.com/SamuelLlamzon/Senior-Project---Crawford-Composition
+abstract: >-
+  This program was developed in an exploration of
+  algorithmic composition of melodies informed by analyses
+  of Ruth Crawford Seeger's compositional rules and style.
